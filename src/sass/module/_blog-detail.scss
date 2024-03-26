@@ -1,0 +1,77 @@
+@use "global" as *;
+
+.blog-detail__date {
+  font-size: rem(14);
+  font-family: $gotu-font;
+  line-height: calc(18 / 14);
+}
+
+.blog-detail__main {
+  border-bottom: 1px solid $green;
+  padding-bottom: rem(7);
+  margin-top: rem(8);
+  font-size: rem(24);
+  line-height: 1;
+  @include mq("md") {
+    font-size: rem(32);
+  }
+}
+
+.blog-detail__img {
+  aspect-ratio: 345 / 231;
+  margin-top: rem(24);
+  @include mq("md") {
+    aspect-ratio: 700 / 468;
+    margin-top: rem(40);
+  }
+}
+
+.blog-detail__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-detail__content {
+  p {
+    margin-top: rem(24);
+    @include mq("md") {
+      margin-top: rem(40);
+    }
+  }
+
+  ul,ol {
+    margin-top: rem(24);
+    @include mq("md") {
+      margin-top: rem(40);
+    }
+  }
+
+  li {
+    padding-left: rem(27);
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      top: rem(4);
+      left: 0;
+      height: rem(18);
+      width: rem(18);
+      background-image: url(../images/common/hitode-green.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  img {
+    aspect-ratio: 345 / 231;
+    margin-top: rem(24);
+    @include mq("md") {
+      aspect-ratio: 700 / 468;
+      margin-top: rem(40);
+    }
+  }
+}
+
+

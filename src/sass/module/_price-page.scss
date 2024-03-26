@@ -1,0 +1,12 @@
+@use "global" as *;
+
+.price-page__inner.inner {
+  max-width: rem(750);
+}
+
+.price-page__item + .price-page__item {
+  margin-top: rem(40);
+  @include mq("md") {
+    margin-top: rem(80);
+  }
+}

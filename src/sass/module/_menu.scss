@@ -1,0 +1,39 @@
+@use "global" as *;
+
+.menu__title {
+  color: $white;
+  font-weight: $bold;
+  line-height: 1.125;
+  position: relative;
+  transition: all 0.3s;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.menu__title::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: rem(-22);
+  width: rem(18);
+  height: rem(18);
+  background-image: url(../images/common/hitode.svg);
+}
+
+.menu__link {
+  display: inline-block;
+  color: $white;
+  font-weight: $normal;
+  line-height: 1.125;
+  margin-top: rem(24);
+}
+
+.menu__title.menu__title--site,
+.menu__link.menu__link--site {
+  color: $black;
+}
+
+.menu__title.menu__title--site::before {
+  background-image: url(../images/common/hitode-black.svg);
+}

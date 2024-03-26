@@ -1,0 +1,113 @@
+@use "global" as *;
+
+.top-about {
+  position: relative;
+}
+
+.top-about::after {
+  @include mq("md") {
+    content: "";
+    position: absolute;
+    bottom: -88px;
+    right: calc(50% - min(48%, rem(637)));
+    background-image: url(../images/common/sango.svg);
+    width: rem(194);
+    height: rem(181);
+  }
+}
+
+.top-about__container {
+  margin: rem(54) auto 0;
+  margin-top: rem(54);
+  position: relative;
+  max-width: 600px;
+  @include mq("md") {
+    max-width: 100%;
+    margin-top: rem(120);
+    padding-left: rem(200);
+  }
+}
+
+.top-about__images {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.top-about__img1 {
+  position: absolute;
+  top: rem(-25);
+  left: calc(50% - rem(173));
+  width: rem(128);
+  max-width: 100%;
+  z-index: 1;
+  @include mq("md") {
+    top: rem(-80);
+    left: rem(-200);
+    width: rem(400);
+  }
+}
+
+.top-about__img2 {
+  width: rem(280);
+  max-width: 100%;
+  margin-left: rem(64);
+  @include mq("md") {
+    width: rem(880);
+    margin-left: 0;
+  }
+}
+
+.top-about__content {
+  margin-top: rem(40);
+  @include mq("md") {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: rem(108);
+    padding-right: rem(60);
+    z-index: 2;
+  }
+}
+
+.top-about__title {
+  color: $green;
+  font-size: rem(40);
+  font-family: $gotu-font;
+  font-weight: $normal;
+  line-height: 1;
+  @include mq("md") {
+    width: rem(405);
+    max-width: 100%;
+    color: $white;
+    font-size: rem(80);
+    line-height: 1.25;
+    padding-top: rem(12);
+  }
+}
+
+.top-about__body {
+  margin-top: rem(16);
+  @include mq("md") {
+    width: 37%;
+    margin-left: rem(36);
+  }
+}
+
+.top-about__text {
+  color: $black;
+  font-weight: $normal;
+  @include mq("md") {
+    color: $white;
+  }
+}
+
+.top-about__button {
+  margin-top: rem(50);
+  text-align: center;
+  @include mq("md") {
+    margin-top: rem(36);
+  }
+}

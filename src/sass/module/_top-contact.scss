@@ -1,0 +1,127 @@
+@use "global" as *;
+
+.top-contact {
+  position: relative;
+}
+
+.top-contact::after {
+  content: "";
+  position: absolute;
+  top: rem(-24);
+  right: calc(50% - min(48%, rem(670)));
+  background-image: url(../images/common/top-price-group.svg);
+  background-size: cover;
+  width: rem(109);
+  height: rem(50);
+  @include mq("md") {
+    top: rem(-40);
+    width: rem(301);
+    height: rem(138);
+  }
+}
+
+.top-contact__container {
+  @include mq("md") {
+    box-shadow: rem(4) rem(4) rem(10) 0 rgba(0, 0, 0, 0.25);
+    padding: rem(80) rem(112) rem(80) rem(50);
+  }
+}
+
+.top-contact__flex {
+  @include mq("md") {
+    display: flex;
+  }
+}
+
+.top-contact__contents {
+  padding: 0 rem(25);
+  @include mq("md") {
+    width: 56.9%;
+    padding: 0;
+    padding-right: rem(45);
+  }
+}
+
+.top-contact__title {
+  padding-bottom: rem(6);
+  border-bottom: rem(1) solid $green;
+}
+
+.top-contact__logo {
+  width: rem(174);
+  margin: 0 auto;
+  @include mq("md") {
+    width: rem(200);
+  }
+}
+
+.top-contact__content {
+  margin-top: rem(16);
+  @include mq("md") {
+    margin-top: rem(24);
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.top-contact__info {
+  @include mq("md") {
+    width: 33.2%;
+  }
+}
+
+.top-contact__info-text {
+  text-align: center;
+  color: $black;
+  font-weight: $normal;
+  @include mq("md") {
+    text-align: left;
+  }
+}
+
+.top-contact__info-text:not(:first-child) {
+  margin-top: rem(4);
+}
+
+.top-contact__map {
+  margin-top: rem(16);
+  width: 100%;
+  height: rem(160);
+  @include mq("md") {
+    width: 62.5%;
+    height: rem(148);
+    margin-top: 0;
+  }
+}
+
+.top-contact__map iframe {
+  aspect-ratio: 59 / 32;
+  height: 100%;
+  width: 100%;
+}
+
+.top-contact__contact {
+  padding: 0 rem(15);
+  margin-top: rem(40);
+  @include mq("md") {
+    width: 43.1%;
+    padding: 0;
+    margin-top: 0;
+    padding-left: rem(81);
+    padding-top: rem(20);
+    border-left: 1px solid $green;
+  }
+}
+
+.top-contact__text {
+  margin-top: rem(8);
+  color: $green;
+  font-size: rem(14);
+  font-weight: $normal;
+  line-height: 1.286;
+}
+
+.top-contact__button {
+  text-align: center;
+  margin-top: rem(38);
+}

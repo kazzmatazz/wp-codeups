@@ -1,0 +1,50 @@
+@use "global" as *;
+
+.policy__inner.inner {
+  max-width: rem(850);
+}
+
+.policy__heading {
+  font-weight: $medium;
+  font-size: rem(24);
+  @include mq("md") {
+    font-size: rem(32);
+  }
+}
+
+.policy__content {
+  margin-top: rem(40);
+  line-height: 2;
+
+  ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+
+  ol:first-of-type {
+    margin-top: rem(40);
+  }
+
+  p:not(:first-of-type) {
+    margin-top: rem(40);
+  }
+
+  li {
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+}
+
+.policy__content.policy__content--terms {
+  ol {
+    margin-top: rem(40);
+  }
+
+  p:not(:first-of-type) {
+    margin-top: 0;
+  }
+
+  p:last-of-type {
+    margin-top: rem(40);
+  }
+}

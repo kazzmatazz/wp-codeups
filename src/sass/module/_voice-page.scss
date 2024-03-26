@@ -1,0 +1,9 @@
+@use "global" as *;
+
+.voice-page__inner {
+  position: relative;
+}
+
+.voice-page__items {
+  margin-top: rem(32);
+}

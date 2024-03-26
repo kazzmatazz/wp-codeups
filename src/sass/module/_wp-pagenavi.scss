@@ -1,0 +1,86 @@
+@use "global" as *;
+
+.wp-pagenavi {
+  display: flex;
+  justify-content: center;
+}
+
+.wp-pagenavi a,
+.wp-pagenavi span {
+  border: 1px solid $green;
+  font-family: $lato-font;
+  line-height: 1;
+  font-weight: $bold;
+  width: rem(38);
+  padding: rem(8) 0;
+  text-align: center;
+}
+
+.wp-pagenavi a {
+  color: $green;
+  margin-left: rem(10);
+  &:hover {
+    color: $white;
+    background-color: $green;
+  }
+}
+
+.wp-pagenavi a:last-child {
+  margin-left: rem(40);
+}
+
+.wp-pagenavi span {
+  color: $white;
+  background-color: $green;
+}
+
+.previouspostslink {
+  margin-right: rem(40);
+  &:hover {
+    &::after {
+      border-top: solid 1px $white;
+      border-left: solid 1px $white;
+    }
+  }
+}
+
+.nextpostslink {
+  margin-left: rem(40);
+  &:hover {
+    &::after {
+      border-top: solid 1px $white;
+      border-right: solid 1px $white;
+    }
+  }
+}
+
+.previouspostslink,
+.nextpostslink {
+  height: rem(38);
+  width: rem(38);
+  position: relative;
+}
+
+.previouspostslink::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-top: solid 1px $green;
+  border-left: solid 1px $green;
+  top: 50%;
+  left: 50%;
+  transform: rotate(-45deg) translateY(-50%);
+}
+
+.nextpostslink::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-top: solid 1px $green;
+  border-right: solid 1px $green;
+  top: 50%;
+  left: rem(15);
+  transform: rotate(45deg) translateX(-50%);
+}

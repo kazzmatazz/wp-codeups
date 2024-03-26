@@ -1,0 +1,56 @@
+@use "global" as *;
+
+.top-blog {
+  position: relative;
+}
+
+.top-blog::before {
+  @include mq("md") {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: rem(500);
+    background: url(../images/common/top-blog-background.jpg) no-repeat;
+    background-size: cover;
+  }
+}
+
+.top-blog::after {
+  @include mq("md") {
+    content: "";
+    position: absolute;
+    top: rem(24);
+    left: calc(50% - min(48%, rem(620)));
+    background-image: url(../images/common/top-blog-group.svg);
+    width: rem(437);
+    height: rem(201);
+  }
+}
+
+.top-blog__inner.inner {
+  padding-left: rem(20);
+  padding-right: rem(20);
+  position: relative;
+  @include mq("md") {
+    padding-left: rem(25);
+    padding-right: rem(25);
+  }
+}
+
+.top-blog__items {
+  margin-top: rem(30);
+  justify-content: center;
+  @include mq("md") {
+    margin-top: rem(80);
+  }
+}
+
+.top-blog__button {
+  margin-top: rem(40);
+  text-align: center;
+  @include mq("md") {
+    margin-top: rem(80);
+  }
+}
