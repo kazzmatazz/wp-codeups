@@ -1,0 +1,98 @@
+<?php get_header(); ?>
+
+  <main>
+    <!-- メインビュー -->
+    <div class="about-mv sub-mv">
+      <div class="sub-mv__inner">
+        <div class="sub-mv__title">
+          <h1 class="sub-mv__title-main">About us</h1>
+        </div>
+      </div>
+    </div>
+    <!-- パンくず -->
+    <?php  get_template_part('parts/breadcrumb'); ?>
+
+    <!-- アバウト -->
+    <section class="about-about about-about-layout">
+      <div class="about-about__inner inner">
+        <div class="about-about__container">
+          <div class="about-about__images">
+            <div class="about-about__img1 u-desktop">
+              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/about-ocean-img1.jpg" alt="屋根の上にシーサーがいる">
+            </div>
+            <div class="about-about__img2">
+              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/about-ocean-img2.jpg" alt="海の中にいる2匹の黄色い魚">
+            </div>
+          </div>
+          <div class="about-about__content">
+            <h3 class="about-about__title">Dive into<br>the Ocean</h3>
+            <div class="about-about__body">
+              <p class="about-about__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ギャラリー -->
+    <section class="about-gallery about-gallery-layout">
+      <div class="about-gallery__inner inner">
+        <div class="about-gallery__heading section-heading">
+          <h2 class="section-heading__main">Gallery</h2>
+          <p class="section-heading__sub">フォト</p>
+        </div>
+        <div class="about-gallery__images">
+          <?php
+          // 'gallery_image_group'グループからデータを取得
+          $gallery_image_groups = SCF::get( 'gallery_image_group' );
+          if ( !empty( $gallery_image_groups ) ) {
+              foreach ( $gallery_image_groups as $image_group ) {
+                  $image_url = wp_get_attachment_image_url( $image_group['gallery_image'], 'full' );
+                  $alt_text = $image_group['gallery_text'];
+                  echo '<div class="about-gallery__image js-modal">';
+                  echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( $alt_text ) . '">';
+                  echo '</div>';
+              }
+            }
+            ?>
+        </div>
+      </div>
+    </section>
+    <div class="about-gallery__modal js-overlay"></div>
+    <!-- コンタクト -->
+    <div class="top-contact top-contact-layout">
+      <div class="top-contact__inner inner">
+        <div class="top-contact__container">
+          <div class="top-contact__flex">
+            <div class="top-contact__contents">
+              <div class="top-contact__title">
+                <img class="top-contact__logo" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/codeups-logo2.svg" alt="ロゴ">
+              </div>
+              <div class="top-contact__content">
+                <div class="top-contact__info">
+                  <p class="top-contact__info-text">沖縄県那覇市1-1</p>
+                  <p class="top-contact__info-text">TEL:0120-000-0000</p>
+                  <p class="top-contact__info-text">営業時間:8:30-19:00</p>
+                  <p class="top-contact__info-text">定休日:毎週火曜日</p>
+                </div>
+                <div class="top-contact__map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.992189400534!2d127.68828337607235!3d26.22944332706094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34e56bd0b4a42ff1%3A0x36812e0e598f7d6b!2z44CSOTAwLTAwMDUg5rKW57iE55yM6YKj6KaH5biC5aSp5LmF77yR5LiB55uu77yR!5e0!3m2!1sja!2sjp!4v1698563889471!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+            </div>
+            <div class="top-contact__contact">
+              <div class="top-contact__heading section-heading section-heading--wide">
+                <h2 class="section-heading__main">Contact</h2>
+                <p class="section-heading__sub">お問い合わせ</p>
+                <div class="top-contact__text">ご予約・お問い合わせはコチラ</div>
+              </div>
+              <div class="top-contact__button">
+                <a href="#" class="button"><span>Contact us</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<?php get_footer(); ?>
