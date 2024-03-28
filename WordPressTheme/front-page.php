@@ -6,34 +6,32 @@
       <div class="top-mv__inner">
         <div class="top-mv__slider swiper js-mv-swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <picture>
-                <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-mv-img1.jpg" media="(min-width: 768px)">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-mv-sp-img1.jpg" alt="亀が海の中を泳いでいる様子">
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-mv-img2.jpg" media="(min-width: 768px)">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-mv-sp-img2.jpg" alt="亀とダイバーが海の中で向かい合っている様子">
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-mv-img3.jpg" media="(min-width: 768px)">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-mv-sp-img3.jpg" alt="島の前に船が浮かんでいる様子">
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-mv-img4.jpg" media="(min-width: 768px)">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-mv-sp-img4.jpg" alt="砂浜と海">
-              </picture>
-            </div>
+              <?php
+              // 'mv_image_group'から全てのグループデータを取得
+              $mv_image_groups = SCF::get('mv_image_group');
+              if (!empty($mv_image_groups)) {
+                  foreach ($mv_image_groups as $mv_image_group) {
+                      $pc_image_id = $mv_image_group['mv_pc_image'];
+                      $sp_image_id = $mv_image_group['mv_sp_image'];
+                      $alt_text = $mv_image_group['mv_text'];
+
+                      $pc_image_url = wp_get_attachment_image_url($pc_image_id, 'full');
+                      $sp_image_url = wp_get_attachment_image_url($sp_image_id, 'full');
+                      ?>
+                      <div class="swiper-slide">
+                          <picture>
+                              <source srcset="<?php echo esc_url($pc_image_url); ?>" media="(min-width: 768px)">
+                              <img src="<?php echo esc_url($sp_image_url); ?>" alt="<?php echo esc_attr($alt_text); ?>">
+                          </picture>
+                      </div>
+                      <?php
+                  }
+              }
+              ?>
           </div>
           <div class="top-mv__title">
-            <p class="top-mv__title-main">DIVING</p>
-            <p class="top-mv__title-sub">into the ocean</p>
+              <p class="top-mv__title-main">DIVING</p>
+              <p class="top-mv__title-sub">into the ocean</p>
           </div>
         </div>
       </div>
