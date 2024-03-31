@@ -84,3 +84,8 @@
   left: rem(15);
   transform: rotate(45deg) translateX(-50%);
 }
+
+.wp-pagenavi .page.smaller {
+  margin-right: rem(10);
+  margin-left: 0;
+}

@@ -2492,6 +2492,11 @@ a {
 	width: 10px;
 }
 
+.wp-pagenavi .page.smaller {
+	margin-left: 0;
+	margin-right: 0.625rem;
+}
+
 @media screen and (min-width: 768px) {
 
 .u-desktop {
