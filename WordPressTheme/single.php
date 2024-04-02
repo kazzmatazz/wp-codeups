@@ -15,30 +15,45 @@
     <section class="blog-list blog-list-layout fish-icon">
       <div class="blog-list__inner inner">
         <div class="blog-list__container blog-list__container--relative">
-          <div class="blog-list__wrap">
-            <ul class="blog-list__items blog-cards blog-cards--two">
-              <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                <li class="blog-cards__item blog-card">
-                  <a href="<?php the_permalink(); ?>" class="blog-card__link">
-                    <div class="blog-card__img">
-                      <?php if (get_the_post_thumbnail()) : ?>
-                      <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
-                      <?php else : ?>
-                      <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
-                      <?php endif; ?>
-                    </div>
-                    <div class="blog-card__body">
-                      <time datetime="<?php the_time('Y-m-d'); ?>" class="blog-card__date"><?php the_time('Y/m/d'); ?></time>
-                      <h3 class="blog-card__title"><?php the_title(); ?></h3>
-                      <p class="blog-card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキスト</p>
-                    </div>
-                  </a>
-                </li>
-              <?php endwhile; endif; ?>
-            </ul>
+          <div class="blog-list__wrap blog-detail">
+            <div class="blog-detail__heading">
+              <time datetime="2023-11-17" class="blog-detail__date">2023/11/17</time>
+              <h3 class="blog-detail__main">ライセンス取得</h3>
+            </div>
+            <div class="blog-detail__img">
+              <?php if (get_the_post_thumbnail()) : ?>
+              <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+              <?php else : ?>
+              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
+              <?php endif; ?>
+            </div>
+            <div class="blog-detail__content">
+              <?php if (have_posts()) :
+                while (have_posts()) :
+                  the_post(); ?>
+              <?php the_content(); ?>
+              <?php endwhile;
+              endif; ?>
+            </div>
             <!-- ページネーション -->
-            <div class="wp-pagenavi wp-pagenavi-layout">
-              <?php wp_pagenavi(); ?>
+            <div class="wp-pagenavi wp-pagenavi-layout wp-pagenavi-layout--short">
+              <?php
+              $prev = get_previous_post();
+              if (!empty($prev)) {
+                $prev_url = esc_url(get_permalink($prev->ID));
+              }
+
+              $next = get_next_post();
+              if (!empty($next)) {
+                $next_url = esc_url(get_permalink($next->ID));
+              }
+              ?>
+              <?php if (!empty($prev)) : ?>
+              <a class="previouspostslink" rel="prev" href="<?php echo $prev_url; ?>"></a>
+              <?php endif; ?>
+              <?php if (!empty($next)) : ?>
+              <a class="nextpostslink" rel="next" href="<?php echo $next_url; ?>"></a>
+              <?php endif; ?>
             </div>
           </div>
           <aside class="blog-list__sidebar sidebar">
