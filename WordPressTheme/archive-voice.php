@@ -2,79 +2,69 @@
 
   <main>
     <!-- メインビュー -->
-    <div class="campaign-mv sub-mv">
+    <div class="voice-mv sub-mv">
       <div class="sub-mv__inner">
         <div class="sub-mv__title">
-          <h1 class="sub-mv__title-main">Campaign</h1>
+          <h1 class="sub-mv__title-main">Voice</h1>
         </div>
       </div>
     </div>
     <!-- パンくず -->
     <?php  get_template_part('parts/breadcrumb'); ?>
     <!-- キャンペーン -->
-    <div class="campaign-page campaign-page-layout fish-icon">
-      <div class="campaign-page__inner inner">
-        <ul class="campaign-page__list category-list">
+    <section class="voice-page blog-list-layout fish-icon">
+      <div class="voice-page__inner inner">
+        <ul class="voice-page__list category-list">
           <li class="category-list__item js-tab-menu is-active">
             <a href="#">ALL</a>
           </li>
-          <?php $terms = get_terms('campaign_category'); ?>
+          <?php $terms = get_terms('voice_category'); ?>
           <?php foreach ($terms as $term) : ?>
-            <li data-tab="<?php echo esc_attr($term->slug); ?>" class="category-list__item js-tab-menu">
+            <li class="category-list__item js-tab-menu">
               <a href="<?php echo get_term_link($term->term_id); ?>"><?php echo esc_html($term->name); ?></a>
             </li>
           <?php endforeach; ?>
         </ul>
-        <ul class="campaign-page__contents">
+        <ul class="voice-page__items voice-cards">
           <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-            <li class="campaign-page__content campaign-card">
-              <div class="campaign-card__img">
-                <?php if (get_the_post_thumbnail()) : ?>
-                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
-                <?php else : ?>
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
-                <?php endif; ?>
-              </div>
-              <div class="campaign-card__body campaign-card__body--large">
-                <span class="campaign-card__category category">
-                  <?php
-                  $terms = get_the_terms($post->ID, 'campaign_category');
-                  if ($terms) {
-                    echo $terms[0]->name;
-                  }
-                  ?>
-                </span>
-                <h3 class="campaign-card__title campaign-card__title--large"><?php the_title(); ?></h3>
-                <div class="campaign-card__wrap">
-                  <p class="campaign-card__menu">全部コミコミ(お一人様)</p>
-                  <div class="campaign-card__price">
+            <li class="voice-cards__item voice-card">
+              <div class="voice-card__contents">
+                <div class="voice-card__content">
+                  <div class="voice-card__meta">
                     <?php
-                      $price_group = get_field('campaign_price-group');
-                      ?>
-                    <?php if ($price_group) : ?>
-                    <?php
-                      $original_price = $price_group['original_price'];
-                      $discounted_price = $price_group['discounted_price'];
-                      ?>
-                    <p class="campaign-card__regular"><?php echo $original_price; ?></p>
-                    <p class="campaign-card__row"><?php echo $discounted_price; ?></p>
+                    $guset_group = get_field('guest_group');
+                    if ($guset_group) :
+                    $age = $guset_group['age'];
+                    $type = $guset_group['type'];
+                    ?>
+                    <span class="voice-card__info"><?php echo $age,'(',$type,')'; ?></span>
                     <?php endif; ?>
+                    <!-- <span class="voice-card__info">20代(女性)</span> -->
+                    <span class="voice-card__category category">
+                      <?php
+                      $terms = get_the_terms($post->ID, 'voice_category');
+                      if ($terms) {
+                        echo $terms[0]->name;
+                      }
+                      ?>
+                    </span>
                   </div>
+                  <h3 class="voice-card__title"><?php the_title(); ?></h3>
                 </div>
-                <p class="campaign-card__text u-desktop">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキスト</p>
-                <div class="campaign-card__contents u-desktop">
-                  <p class="campaign-card__date">2023/6/1-9/30</p>
-                  <p class="campaign-card__reserve">ご予約・お問い合わせはコチラ</p>
-                  <div class="campaign-card__button">
-                    <a href="" class="button"><span>View more</span></a>
-                  </div>
+                <div class="voice-card__img colorbox">
+                  <?php if (get_the_post_thumbnail()) : ?>
+                  <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+                  <?php else : ?>
+                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
+                  <?php endif; ?>
                 </div>
               </div>
+              <p class="voice-card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。</p>
             </li>
           <?php endwhile; endif; ?>
         </ul>
       </div>
-    </div>
+    </section>
     <!-- ページネーション -->
     <div class="wp-pagenavi wp-pagenavi-layout">
       <?php wp_pagenavi(); ?>

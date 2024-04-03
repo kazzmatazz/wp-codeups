@@ -57,6 +57,9 @@ function change_posts_per_page($query) {
 	if ( $query->is_archive('campaign') ) {
 			$query->set( 'posts_per_page', '4' );
 	}
+  if ( $query->is_archive('voice') ) {
+    $query->set( 'posts_per_page', '6' );
+  }
 }
 add_action( 'pre_get_posts', 'change_posts_per_page' );
 
