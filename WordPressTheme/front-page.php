@@ -362,73 +362,73 @@
             <li class="top-price__item">
               <h3 class="top-price__title">ライセンス講習</h3>
               <dl class="top-price__container">
-                <div class="top-price__info">
-                  <dt class="top-price__menu">オープンウォーターダイバーコース</dt>
-                  <dd class="top-price__price">¥50,000</dd>
-                </div>
-                <div class="top-price__info">
-                  <dt class="top-price__menu">アドバンスドオープンウォーターコース</dt>
-                  <dd class="top-price__price">¥60,000</dd>
-                </div>
-                <div class="top-price__info">
-                  <dt class="top-price__menu">レスキュー＋EFRコース</dt>
-                  <dd class="top-price__price">¥70,000</dd>
-                </div>
+                <?php
+                  $license_option_groups = SCF::get_option_meta('price_option', 'license');
+                  if (!empty($license_option_groups)) {
+                      foreach ($license_option_groups as $license_option) {
+                          $license_course = $license_option['license_course'];
+                          $license_price = $license_option['license_price'];
+                          echo '<div class="top-price__info">';
+                          echo '<dt class="top-price__menu">' . esc_html($license_course) . '</dt>';
+                          echo '<dd class="top-price__price">' . esc_html($license_price) . '</dd>';
+                          echo '</div>';
+                    }
+                  }
+                ?>
               </dl>
             </li>
             <li class="top-price__item">
               <h3 class="top-price__title">体験ダイビング</h3>
               <dl class="top-price__container">
-                <div class="top-price__info">
-                  <dt class="top-price__menu">ビーチ体験ダイビング(半日)</dt>
-                  <dd class="top-price__price">¥7,000</dd>
-                </div>
-                <div class="top-price__info">
-                  <dt class="top-price__menu">ビーチ体験ダイビング(1日)</dt>
-                  <dd class="top-price__price">¥14,000</dd>
-                </div>
-                <div class="top-price__info">
-                  <dt class="top-price__menu">ボート体験ダイビング(半日)</dt>
-                  <dd class="top-price__price">¥10,000</dd>
-                </div>
-                <div class="top-price__info">
-                  <dt class="top-price__menu">ボート体験ダイビング(1日)</dt>
-                  <dd class="top-price__price">¥18,000</dd>
-                </div>
+                <?php
+                  $experience_option_groups = SCF::get_option_meta('price_option', 'experience');
+                  if (!empty($experience_option_groups)) {
+                      foreach ($experience_option_groups as $experience_option) {
+                          $experience_course = $experience_option['experience_course'];
+                          $experience_price = $experience_option['experience_price'];
+                          echo '<div class="top-price__info">';
+                          echo '<dt class="top-price__menu">' . esc_html($experience_course) . '</dt>';
+                          echo '<dd class="top-price__price">' . esc_html($experience_price) . '</dd>';
+                          echo '</div>';
+                    }
+                  }
+                ?>
               </dl>
             </li>
             <li class="top-price__item">
               <h3 class="top-price__title">ファンダイビング</h3>
               <dl class="top-price__container">
-                <div class="top-price__info">
-                  <dt class="top-price__menu">ビーチダイビング(2ダイブ)</dt>
-                  <dd class="top-price__price">¥14,000</dd>
-                </div>
-                <div class="top-price__info">
-                  <dt class="top-price__menu">ボートダイビング(2ダイブ)</dt>
-                  <dd class="top-price__price">¥18,000</dd>
-                </div>
-                <div class="top-price__info">
-                  <dt class="top-price__menu">スペシャルダイビング(2ダイブ)</dt>
-                  <dd class="top-price__price">¥24,000</dd>
-                </div>
-                <div class="top-price__info">
-                  <dt class="top-price__menu">ナイトダイビング(1ダイブ)</dt>
-                  <dd class="top-price__price">¥10,000</dd>
-                </div>
+                <?php
+                  $fun_option_groups = SCF::get_option_meta('price_option', 'fun');
+                  if (!empty($fun_option_groups)) {
+                      foreach ($fun_option_groups as $fun_option) {
+                          $fun_course = $fun_option['fun_course'];
+                          $fun_price = $fun_option['fun_price'];
+                          echo '<div class="top-price__info">';
+                          echo '<dt class="top-price__menu">' . esc_html($fun_course) . '</dt>';
+                          echo '<dd class="top-price__price">' . esc_html($fun_price) . '</dd>';
+                          echo '</div>';
+                    }
+                  }
+                ?>
               </dl>
             </li>
             <li class="top-price__item">
               <h3 class="top-price__title">スペシャルダイビング</h3>
               <dl class="top-price__container">
-                <div class="top-price__info">
-                  <dt class="top-price__menu">貸切ダイビング(2ダイブ)</dt>
-                  <dd class="top-price__price">¥24,000</dd>
-                </div>
-                <div class="top-price__info">
-                  <dt class="top-price__menu">1日ダイビング(3ダイブ)</dt>
-                  <dd class="top-price__price">¥32,000</dd>
-                </div>
+                <?php
+                  $special_option_groups = SCF::get_option_meta('price_option', 'special');
+                  if (!empty($special_option_groups)) {
+                      foreach ($special_option_groups as $special_option) {
+                          $special_course = $special_option['special_course'];
+                          $special_price = $special_option['special_price'];
+                          echo '<div class="top-price__info">';
+                          echo '<dt class="top-price__menu">' . esc_html($special_course) . '</dt>';
+                          echo '<dd class="top-price__price">' . esc_html($special_price) . '</dd>';
+                          echo '</div>';
+                    }
+                  }
+                ?>
               </dl>
             </li>
           </ul>

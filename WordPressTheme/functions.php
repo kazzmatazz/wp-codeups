@@ -81,3 +81,29 @@ function my_setup()
   );
 }
 add_action('after_setup_theme', 'my_setup');
+
+// オプションページの追加
+SCF::add_options_page(
+	'ギャラリー',
+	'ギャラリー用画像',
+	'manage_options',
+	'gallery',
+	'dashicons-format-gallery',
+	7
+);
+SCF::add_options_page(
+	'料金一覧',
+	'料金一覧',
+	'manage_options',
+	'price_option',
+	'dashicons-money-alt',
+	7
+);
+SCF::add_options_page(
+	'よくある質問',
+	'よくある質問',
+	'manage_options',
+	'faq',
+	'dashicons-editor-help',
+	8
+);

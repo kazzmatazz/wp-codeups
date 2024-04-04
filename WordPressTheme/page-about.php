@@ -42,18 +42,16 @@
         </div>
         <div class="about-gallery__images">
           <?php
-          // 'gallery_image_group'グループからデータを取得
-          $gallery_image_groups = SCF::get( 'gallery_image_group' );
+          $gallery_image_groups = SCF::get_option_meta('gallery','gallery_image_group');
           if ( !empty( $gallery_image_groups ) ) {
               foreach ( $gallery_image_groups as $image_group ) {
                   $image_url = wp_get_attachment_image_url( $image_group['gallery_image'], 'full' );
-                  $alt_text = $image_group['gallery_text'];
                   echo '<div class="about-gallery__image js-modal">';
-                  echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( $alt_text ) . '">';
+                  echo '<img src="' . esc_url( $image_url ). '" alt="ギャラリーの画像">';
                   echo '</div>';
               }
             }
-            ?>
+          ?>
         </div>
       </div>
     </section>
