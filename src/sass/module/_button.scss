@@ -1,19 +1,16 @@
 @use "global" as *;
 
 .button {
-  display: inline-block;
   background-color: $green;
+  border: rem(1) solid $green;
   color: $white;
-  font-weight: $normal;
+  display: inline-block;
   font-family: $gotu-font;
-  line-height: 1.571;
-  width: rem(202);
+  font-weight: $normal;
   font-size: rem(14);
   position: relative;
   transition: all 0.3s;
-  border: rem(1) solid $green;
   z-index: 3;
-  padding: rem(16);
   cursor: pointer;
   text-align: center;
   &:hover {
@@ -57,13 +54,21 @@
 }
 
 .button span {
-  display: inline-block;
-  padding-bottom: rem(5);
   position: relative;
   z-index: 3;
 }
 
-.button span::after {
+.button__text {
+  display: inline-block;
+  width: rem(202);
+  padding: rem(16) rem(88) rem(16) rem(40);
+}
+
+.button__text.button__text--submit {
+  padding: 0;
+}
+
+.button__text::after {
   content: "";
   display: inline-block;
   width: rem(40);
@@ -73,6 +78,24 @@
   transform: skew(45deg);
   margin-left: rem(6);
   margin-bottom: rem(4);
+  position: absolute;
+  top: 40%;
+  right: rem(40);
+}
+
+.button__submit {
+  display: inline-block;
+  width: rem(202);
+  padding: rem(16);
+}
+
+.button input[type=submit] {
+  color: $white;
+  transition: all 0.3s;
+}
+
+.button:hover input[type=submit] {
+  color: $green;
 }
 
 .button.button--white {

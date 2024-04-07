@@ -107,3 +107,49 @@ SCF::add_options_page(
 	'dashicons-editor-help',
 	8
 );
+
+// Contact Form 7で自動挿入されるPタグ、brタグを削除
+add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
+function wpcf7_autop_return_false() {
+  return false;
+}
+
+//Contact Form 7 のカスタマイズ
+// 保護された投稿のタイトルプレフィックスを削除
+// selectボックスの中身を別の要素から自動で設定する
+function remove_protected($title)
+{
+  return '%s';
+}
+add_filter('protected_title_format', 'remove_protected');
+function filter_wpcf7_form_tag($scanned_tag, $replace)
+{
+  if (!empty($scanned_tag)) {
+    //フォームの名前で判別
+    if ($scanned_tag['name'] == 'menu-94') {
+
+      //カスタム投稿タイプの取得
+      global $post;
+      $args = array(
+        'posts_per_page' => -1,
+        'post_type' => 'campaign',
+        'order' => 'DESC',
+      );
+
+      $customPosts = get_posts($args);
+      if ($customPosts) {
+        foreach ($customPosts as $post) {
+          setup_postdata($post);
+          $title = get_the_title();
+
+          //$scanned_tagに情報を追加
+          $scanned_tag['values'][] = $title;
+          $scanned_tag['labels'][] = $title;
+        }
+      }
+      wp_reset_postdata();
+    }
+  }
+  return $scanned_tag;
+};
+add_filter('wpcf7_form_tag', 'filter_wpcf7_form_tag', 11, 2);

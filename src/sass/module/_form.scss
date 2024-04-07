@@ -5,6 +5,7 @@
   border-bottom: 1px dotted $green;
   @include mq("md") {
     padding-bottom: rem(39);
+    display: flex;
   }
 }
 
@@ -15,19 +16,18 @@
   }
 }
 
-.form__item--error .form__input-text::placeholder {
-  color: $white;
-}
-
-.form__item--error .form__input-text {
-  background-color: rgba(201, 72, 0, 0.2);
+.form__item dd input[type="text"].is-error,
+.form__item dd input[type="email"].is-error,
+.form__item dd input[type="tel"].is-error,
+.form__item dd textarea.is-error,
+.form__select select.is-error {
   border-color: $red;
+  background-color: rgba(201, 72, 0, 0.2);
 }
 
-.form__item dl {
-  @include mq("md") {
-    display: flex;
-  }
+#contact-item.is-error  label span,
+#agree.is-error .wpcf7-list-item-label {
+  background-color: rgba(201, 72, 0, 0.2);
 }
 
 .form__label {
@@ -59,19 +59,23 @@
   }
 }
 
-.form__input-text,
-.form__textarea {
+.form__input input[type="text"],
+.form__input input[type="email"],
+.form__input input[type="tel"],
+.form__input textarea {
   padding: rem(7) rem(16);
   background-color: $white;
   border: 1px solid $green;
   width: 100%;
 }
 
-.form__input-text::placeholder {
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder {
   color: $blue;
 }
 
-.form__textarea {
+.form__input textarea {
   height: rem(200);
   resize: none;
 }
@@ -87,19 +91,6 @@
     margin-top: 0;
     width: calc(100% - rem(220));
   }
-}
-
-.form__checkbox label {
-  display: block;
-}
-
-.form__checkbox label:not(:first-of-type) {
-  margin-top: rem(4);
-}
-
-.form__checkbox input,
-.form__privacy input {
-  display: none;
 }
 
 .form__checkbox input + span {
@@ -181,10 +172,15 @@
   }
 }
 
-.form__privacy input + span {
+.form__privacy label {
+  display: flex;
+  justify-content: center;
+}
+
+.form__privacy .wpcf7-list-item-label {
   cursor: pointer;
   display: inline-block;
-  padding-left: rem(30);
+  padding-left: rem(16);
   position: relative;
   font-size: rem(14);
   @include mq("md") {
@@ -192,33 +188,49 @@
   }
 }
 
-.form__privacy input + span::before {
+.form__privacy input[type=checkbox] + span::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: rem(5);
   left: 0;
   background: #fff;
   border: 1px solid $green;
   display: block;
-  width: rem(22);
-  height: rem(22);
+  width: rem(14);
+  height: rem(14);
 }
 
-.form__privacy input + span::after {
+.form__privacy input[type=checkbox] + span::after {
   content: "";
   position: absolute;
-  top: 50%;
-  left: rem(4);
+  top: rem(10);
+  left: rem(2);
   transform: translateY(-50%) rotate(-45deg);
   display: block;
-  width: rem(12);
-  height: rem(8);
+  width: rem(10);
+  height: rem(6);
   border-bottom: rem(3) solid $red;
   border-left: rem(3) solid $red;
   transition:  .3s;
   opacity: 0;
+  @include mq("md") {
+    top: 50%;
+    left: rem(2);
+  }
 }
 
 .form__privacy input:checked + span::after {
   opacity: 1;
+}
+
+.wpcf7-form-control span {
+  display: block;
+}
+
+.wpcf7-spinner{
+  display: none;
+}
+
+.wpcf7-list-item {
+  margin: 0;
 }

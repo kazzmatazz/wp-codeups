@@ -3,3 +3,21 @@
 .contact-page__inner.inner {
   max-width: rem(750);
 }
+
+.contact-page__error {
+  text-align: center;
+  color: $red;
+  font-size: rem(14);
+  display: none;
+}
+
+.contact-page__error.is-error {
+  display: block;
+}
+
+.contact-page__form {
+  margin-top: rem(24);
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}

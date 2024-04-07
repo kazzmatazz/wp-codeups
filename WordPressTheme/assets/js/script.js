@@ -154,9 +154,64 @@ jQuery(function ($) {
     $(this).toggleClass('is-open');
   });
 
-  // アコーディオン
+  // アコーディオンメニュー
   $(".js-accordion-title").on("click", function () {
     $(this).toggleClass("is-open");
     $(this).next().slideToggle(300);
+  });
+
+  // 問い合わせフォームの入力チェック
+  $("#submit").on("click", function () {
+    // エラー表示のリセット
+    $("#name").removeClass("is-error");
+    $("#email").removeClass("is-error");
+    $("#tel").removeClass("is-error");
+    $("#contents").removeClass("is-error");
+    $("#contact-item").removeClass("is-error");
+    $("#agree").removeClass("is-error");
+    $(".contact-page__error").removeClass("is-error");
+    if ($("#name").val() === "") {
+      $("#name").addClass("is-error");
+      $(".contact-page__error").addClass("is-error");
+    }
+    if ($("#email").val() === "") {
+      $("#email").addClass("is-error");
+      $(".contact-page__error").addClass("is-error");
+    }
+    if ($("#tel").val() === "") {
+      $("#tel").addClass("is-error");
+      $(".contact-page__error").addClass("is-error");
+    }
+    if ($("#contents").val() === "") {
+      $("#contents").addClass("is-error");
+      $(".contact-page__error").addClass("is-error");
+    }
+    var checkBoxes = $("input[name='checkbox-279[]']");
+    var isChecked = false;
+    checkBoxes.each(function () {
+      if ($(this).prop("checked")) {
+        isChecked = true;
+        return false;
+      }
+    });
+    if (!isChecked) {
+      $("#contact-item").addClass("is-error");
+      $(".contact-page__error").addClass("is-error");
+    }
+    var checkAgree = $("input[name='checkbox-27[]']");
+    var isCheckedAgree = false;
+    checkAgree.each(function () {
+      if ($(this).prop("checked")) {
+        isCheckedAgree = true;
+        return false;
+      }
+    });
+    if (!isCheckedAgree) {
+      $("#agree").addClass("is-error");
+      $(".contact-page__error").addClass("is-error");
+    }
+    if ($("#name").val() !== "" && $("#email").val() !== "" && $("#tel").val() !== "" && $("#contents").val() !== "" && isChecked && $("#agree").prop("checked")) {
+      // window.location.href = "../page-thanks.html";
+    }
   });
 });
