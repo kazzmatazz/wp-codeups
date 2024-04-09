@@ -1,4 +1,4 @@
-<footer class="footer footer-layout">
+<footer class="footer footer-layout <?php if(is_404()){ echo 'footer-layout--none'; } ?>">
     <div class="footer__inner inner">
       <div class="footer__title">
         <div class="footer__name"><img class="footer__logo" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/codeups-logo1.svg" alt="フッターロゴ"></div>
