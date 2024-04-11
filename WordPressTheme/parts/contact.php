@@ -1,3 +1,7 @@
+<?php
+$contact = esc_url(home_url('/contact/'));
+?>
+
 <div class="top-contact top-contact-layout">
   <div class="top-contact__inner inner">
     <div class="top-contact__container">
@@ -30,7 +34,6 @@
                 Contact us
               </span>
             </a>
-            <a href="#" class="button"><span></span></a>
           </div>
         </div>
       </div>
