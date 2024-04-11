@@ -17,8 +17,8 @@
         <div class="blog-list__container blog-list__container--relative">
           <div class="blog-list__wrap blog-detail">
             <div class="blog-detail__heading">
-              <time datetime="2023-11-17" class="blog-detail__date">2023/11/17</time>
-              <h3 class="blog-detail__main">ライセンス取得</h3>
+              <time datetime="<?php the_time('c'); ?>" class="blog-detail__date"><?php the_time('Y.m.d'); ?></time>
+              <h3 class="blog-detail__main"><?php the_title(); ?></h3>
             </div>
             <div class="blog-detail__img">
               <?php if (get_the_post_thumbnail()) : ?>

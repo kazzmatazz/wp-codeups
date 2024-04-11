@@ -602,7 +602,7 @@ a {
 .button__text {
 	display: inline-block;
 	padding: 1rem 5.5rem 1rem 2.5rem;
-	width: 12.625rem;
+	width: 12.75rem;
 }
 
 .button__text.button__text--submit {
@@ -1273,9 +1273,7 @@ input[type=tel]::placeholder {
 .header {
 	background-color: rgba(13, 41, 54, 0.68);
 	height: 5rem;
-	left: 0;
 	position: fixed;
-	top: 0;
 	width: 100%;
 	z-index: 1000;
 }

@@ -88,7 +88,7 @@
               </tbody>
             </table>
           </li>
-          <li class="price-page__item">
+          <li id="price4" class="price-page__item">
             <table class="price-page__table table">
               <thead class="table__head">
                 <tr class="table__row">
