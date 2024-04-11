@@ -673,18 +673,14 @@ a {
 }
 
 .campaign-card__img {
-	aspect-ratio: 280/188;
+	width: 100%;
 }
 
 .campaign-card__img img {
 	-o-object-fit: cover;
-	height: 100%;
+	aspect-ratio: 280/188;
 	object-fit: cover;
 	width: 100%;
-}
-
-.campaign-card__img.campaign-card__img--small {
-	aspect-ratio: 294/188;
 }
 
 .campaign-card__body {
@@ -2790,7 +2786,7 @@ html {
 	height: 34.25rem;
 }
 
-.campaign-card__img {
+.campaign-card__img img {
 	aspect-ratio: 333/223;
 }
 
