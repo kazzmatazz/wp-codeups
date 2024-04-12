@@ -1685,13 +1685,12 @@ input[type=tel]::placeholder {
 }
 
 .sidebar-popular__img {
-	aspect-ratio: 121/90;
 	width: 46.1%;
 }
 
 .sidebar-popular__img img {
 	-o-object-fit: cover;
-	height: 100%;
+	aspect-ratio: 121/90;
 	object-fit: cover;
 	width: 100%;
 }

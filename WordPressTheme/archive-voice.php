@@ -39,7 +39,6 @@
                     ?>
                     <span class="voice-card__info"><?php echo $age,'(',$type,')'; ?></span>
                     <?php endif; ?>
-                    <!-- <span class="voice-card__info">20代(女性)</span> -->
                     <span class="voice-card__category category">
                       <?php
                       $terms = get_the_terms($post->ID, 'voice_category');
