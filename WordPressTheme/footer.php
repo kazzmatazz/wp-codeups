@@ -97,7 +97,7 @@ $terms = esc_url(home_url('/terms-of-service/'));
       </div>
     </div>
   </footer>
-  <div class="page-top js-page-top"></div>
+  <div class="page-top js-page-top <?php if (is_404()) { echo 'page-top--none'; } ?>"></div>
   <?php wp_footer(); ?>
 </body>
 </html>

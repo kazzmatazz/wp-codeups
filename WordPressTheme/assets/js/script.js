@@ -67,6 +67,10 @@ jQuery(function ($) {
 
   // ページトップボタン
   var pageTop = $(".page-top");
+  // 404ページの場合は以下のスクリプトを実行しない
+  if (pageTop.hasClass('page-top--none')) {
+    return;
+  }
   pageTop.hide();
   $(window).scroll(function () {
     if ($(this).scrollTop() > 100) {
@@ -81,7 +85,6 @@ jQuery(function ($) {
     }, 500);
     return false;
   });
-  // フッター手前でストップ
   $(".page-top").hide();
   $(window).on("scroll", function () {
     var scrollHeight = $(document).height();

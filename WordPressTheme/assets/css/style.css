@@ -1525,6 +1525,10 @@ input[type=tel]::placeholder {
 	width: 0.625rem;
 }
 
+.page-top.page-top--none {
+	display: none;
+}
+
 .policy__inner.inner {
 	max-width: 53.125rem;
 }
