@@ -1,5 +1,9 @@
 @use "global" as *;
 
+.site-map__inner {
+  position: relative;
+}
+
 .site-map__container {
   display: flex;
 }
@@ -25,7 +29,7 @@
 .site-map__items + .site-map__items {
   margin-top: rem(40);
   @include mq("md") {
-    margin-left: rem(144);
+    margin-left: rem(136);
     margin-top: 0;
   }
 }

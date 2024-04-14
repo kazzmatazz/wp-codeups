@@ -1813,6 +1813,10 @@ input[type=tel]::placeholder {
 	width: 100%;
 }
 
+.site-map__inner {
+	position: relative;
+}
+
 .site-map__container {
 	display: flex;
 }
@@ -3091,7 +3095,7 @@ html {
 }
 
 .site-map__items + .site-map__items {
-	margin-left: 9rem;
+	margin-left: 8.5rem;
 	margin-top: 0;
 }
 
