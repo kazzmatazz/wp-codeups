@@ -10,8 +10,8 @@
 }
 
 .tab-menu__item {
-  width: rem(102);
-  max-width: 100%;
+  width: 100%;
+  max-width: rem(102);
   padding: rem(10);
   background-color: $blue;
   color: $green;
@@ -20,9 +20,9 @@
   text-align: center;
   cursor: pointer;
   @include mq("md") {
-    width: rem(300);
+    max-width: rem(300);
     font-size: rem(24);
-    padding: rem(13);
+    padding: rem(13) 0;
     display: flex;
     align-items: center;
     justify-content: center;

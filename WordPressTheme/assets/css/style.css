@@ -1963,10 +1963,10 @@ input[type=tel]::placeholder {
 	color: #408F95;
 	cursor: pointer;
 	font-size: 0.875rem;
-	max-width: 100%;
+	max-width: 6.375rem;
 	padding: 0.625rem;
 	text-align: center;
-	width: 6.375rem;
+	width: 100%;
 }
 
 .tab-menu__item.is-active {
@@ -3160,8 +3160,8 @@ html {
 	display: flex;
 	font-size: 1.5rem;
 	justify-content: center;
-	padding: 0.8125rem;
-	width: 18.75rem;
+	max-width: 18.75rem;
+	padding: 0.8125rem 0;
 }
 
 .tab-menu__item::before {

@@ -60,151 +60,59 @@ $terms = esc_url(home_url('/terms-of-service/'));
         </div>
         <div class="top-campaign__slider swiper js-campaign-swiper">
           <div class="swiper-wrapper">
+            <?php
+            $args = array(
+              'post_type' => 'campaign',
+              'post_status' => 'publish',
+              'posts_per_page' => -1,
+              'orderby' => 'post_date',
+              'order' => 'DESC',
+            );
+            $the_blog_query = new WP_Query($args);
+            if ($the_blog_query->have_posts()) :
+              while ($the_blog_query->have_posts()) : $the_blog_query->the_post();
+            ?>
             <div class="swiper-slide">
               <div class="top-campaign__content campaign-card">
                 <div class="campaign-card__img">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-campaign-img1.jpg" alt="海の中にいる小魚たち">
+                  <?php if (get_the_post_thumbnail()) : ?>
+                  <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+                  <?php else : ?>
+                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
+                  <?php endif; ?>
                 </div>
                 <div class="campaign-card__body">
-                  <span class="campaign-card__category category">ライセンス講習</span>
-                  <h3 class="campaign-card__title">ライセンス取得</h3>
+                  <span class="campaign-card__category category">
+                    <?php
+                    $terms = get_the_terms($post->ID, 'campaign_category');
+                    if ($terms) {
+                      echo $terms[0]->name;
+                    }
+                    ?>
+                  </span>
+                  <h3 class="campaign-card__title"><?php the_title(); ?></h3>
                   <div class="campaign-card__wrap">
                     <p class="campaign-card__menu">全部コミコミ(お一人様)</p>
                     <div class="campaign-card__price">
-                      <p class="campaign-card__regular">¥56,000</p>
-                      <p class="campaign-card__row">¥46,000</p>
+                      <?php
+                        $price_group = get_field('campaign_price-group');
+                        ?>
+                      <?php if ($price_group) : ?>
+                      <?php
+                        $original_price = $price_group['original_price'];
+                        $discounted_price = $price_group['discounted_price'];
+                        ?>
+                      <p class="campaign-card__regular"><?php echo $original_price; ?></p>
+                      <p class="campaign-card__row"><?php echo $discounted_price; ?></p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="swiper-slide">
-              <div class="top-campaign__content campaign-card">
-                <div class="campaign-card__img">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-campaign-img2.jpg" alt="島と船と海">
-                </div>
-                <div class="campaign-card__body">
-                  <span class="campaign-card__category category">体験ダイビング</span>
-                  <h3 class="campaign-card__title">貸切体験ダイビング</h3>
-                  <div class="campaign-card__wrap">
-                    <p class="campaign-card__menu">全部コミコミ(お一人様)</p>
-                    <div class="campaign-card__price">
-                      <p class="campaign-card__regular">¥24,000</p>
-                      <p class="campaign-card__row">¥18,000</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top-campaign__content campaign-card">
-                <div class="campaign-card__img">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-campaign-img3.jpg" alt="海の中にいるクラゲたち">
-                </div>
-                <div class="campaign-card__body">
-                  <span class="campaign-card__category category">体験ダイビング</span>
-                  <h3 class="campaign-card__title">ナイトダイビング</h3>
-                  <div class="campaign-card__wrap">
-                    <p class="campaign-card__menu">全部コミコミ(お一人様)</p>
-                    <div class="campaign-card__price">
-                      <p class="campaign-card__regular">¥10,000</p>
-                      <p class="campaign-card__row">¥8,000</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top-campaign__content campaign-card">
-                <div class="campaign-card__img">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-campaign-img4.jpg" alt="海の上にいるダイバーたち">
-                </div>
-                <div class="campaign-card__body">
-                  <span class="campaign-card__category category">ファンダイビング</span>
-                  <h3 class="campaign-card__title">貸切ファンダイビング</h3>
-                  <div class="campaign-card__wrap">
-                    <p class="campaign-card__menu">全部コミコミ(お一人様)</p>
-                    <div class="campaign-card__price">
-                      <p class="campaign-card__regular">¥20,000</p>
-                      <p class="campaign-card__row">¥16,000</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- ループ用スライド -->
-            <div class="swiper-slide">
-              <div class="top-campaign__content campaign-card">
-                <div class="campaign-card__img">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-campaign-img1.jpg" alt="海の中にいる小魚たち">
-                </div>
-                <div class="campaign-card__body">
-                  <span class="campaign-card__category category">ライセンス講習</span>
-                  <h3 class="campaign-card__title">ライセンス取得</h3>
-                  <div class="campaign-card__wrap">
-                    <p class="campaign-card__menu">全部コミコミ(お一人様)</p>
-                    <div class="campaign-card__price">
-                      <p class="campaign-card__regular">¥56,000</p>
-                      <p class="campaign-card__row">¥46,000</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top-campaign__content campaign-card">
-                <div class="campaign-card__img">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-campaign-img2.jpg" alt="島と船と海">
-                </div>
-                <div class="campaign-card__body">
-                  <span class="campaign-card__category category">体験ダイビング</span>
-                  <h3 class="campaign-card__title">貸切体験ダイビング</h3>
-                  <div class="campaign-card__wrap">
-                    <p class="campaign-card__menu">全部コミコミ(お一人様)</p>
-                    <div class="campaign-card__price">
-                      <p class="campaign-card__regular">¥24,000</p>
-                      <p class="campaign-card__row">¥18,000</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top-campaign__content campaign-card">
-                <div class="campaign-card__img">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-campaign-img3.jpg" alt="海の中にいるクラゲたち">
-                </div>
-                <div class="campaign-card__body">
-                  <span class="campaign-card__category category">体験ダイビング</span>
-                  <h3 class="campaign-card__title">ナイトダイビング</h3>
-                  <div class="campaign-card__wrap">
-                    <p class="campaign-card__menu">全部コミコミ(お一人様)</p>
-                    <div class="campaign-card__price">
-                      <p class="campaign-card__regular">¥10,000</p>
-                      <p class="campaign-card__row">¥8,000</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="top-campaign__content campaign-card">
-                <div class="campaign-card__img">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-campaign-img4.jpg" alt="海の上にいるダイバーたち">
-                </div>
-                <div class="campaign-card__body">
-                  <span class="campaign-card__category category">ファンダイビング</span>
-                  <h3 class="campaign-card__title">貸切ファンダイビング</h3>
-                  <div class="campaign-card__wrap">
-                    <p class="campaign-card__menu">全部コミコミ(お一人様)</p>
-                    <div class="campaign-card__price">
-                      <p class="campaign-card__regular">¥20,000</p>
-                      <p class="campaign-card__row">¥16,000</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <?php endwhile; ?>
+            <?php endif; ?>
+            <?php wp_reset_postdata(); ?>
           </div>
         </div>
         <div class="swiper-controller">
@@ -334,36 +242,54 @@ $terms = esc_url(home_url('/terms-of-service/'));
           <p class="section-heading__sub">お客様の声</p>
         </div>
         <ul class="top-voice__items voice-cards">
+          <?php
+          $args = array(
+            'post_type' => 'voice',
+            'post_status' => 'publish',
+            'posts_per_page' => 2,
+            'orderby' => 'post_date',
+            'order' => 'DESC',
+          );
+          $the_view_query = new WP_Query($args);
+          if ($the_view_query->have_posts()) :
+            while ($the_view_query->have_posts()) : $the_view_query->the_post();
+          ?>
           <li class="voice-cards__item voice-card">
             <div class="voice-card__contents">
               <div class="voice-card__content">
                 <div class="voice-card__meta">
-                  <span class="voice-card__info">20代(女性)</span>
-                  <span class="voice-card__category category">ライセンス講習</span>
+                  <?php
+                  $guset_group = get_field('guest_group');
+                  if ($guset_group) :
+                  $age = $guset_group['age'];
+                  $type = $guset_group['type'];
+                  ?>
+                  <span class="voice-card__info"><?php echo $age,'(',$type,')'; ?></span>
+                  <?php endif; ?>
+                  <span class="voice-card__category category">
+                    <?php
+                      $terms = get_the_terms($post->ID, 'voice_category');
+                      if ($terms) {
+                        echo $terms[0]->name;
+                      }
+                    ?>
+                  </span>
                 </div>
-                <h3 class="voice-card__title">ここにタイトルが入ります。ここにタイトル</h3>
+                <h3 class="voice-card__title"><?php the_title(); ?></h3>
               </div>
               <div class="voice-card__img colorbox">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-voice-img1.jpg" alt="麦わら帽子をかぶった女性">
+                <?php if (get_the_post_thumbnail()) : ?>
+                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+                <?php else : ?>
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
+                <?php endif; ?>
               </div>
             </div>
-            <p class="voice-card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。</p>
+            <p class="voice-card__text"><?php the_excerpt(); ?></p>
           </li>
-          <li class="voice-cards__item voice-card">
-            <div class="voice-card__contents">
-              <div class="voice-card__content">
-                <div class="voice-card__meta">
-                  <span class="voice-card__info">20代(男性)</span>
-                  <span class="voice-card__category category">ファンダイビング</span>
-                </div>
-                <h3 class="voice-card__title">ここにタイトルが入ります。ここにタイトル</h3>
-              </div>
-              <div class="voice-card__img colorbox">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-voice-img2.jpg" alt="青い服を着た男性">
-              </div>
-            </div>
-            <p class="voice-card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。</p>
-          </li>
+          <?php endwhile; ?>
+          <?php wp_reset_postdata(); ?>
+          <?php endif; ?>
         </ul>
         <div class="top-voice__button">
           <a href="<?php echo $voice; ?>" class="button">

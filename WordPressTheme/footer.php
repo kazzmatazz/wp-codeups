@@ -20,8 +20,8 @@ $terms = esc_url(home_url('/terms-of-service/'));
       <div class="footer__title">
         <div class="footer__name"><img class="footer__logo" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/codeups-logo1.svg" alt="フッターロゴ"></div>
         <div class="footer__sns">
-          <a href="https://ja-jp.facebook.com" class="footer__sns-link"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/facebook.svg" alt="フェイスブックロゴ"></a>
-          <a href="https://www.instagram.com" class="footer__sns-link"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/instagram.svg" alt="インスタグラムロゴ"></a>
+          <a href="https://ja-jp.facebook.com" class="footer__sns-link" target="_blank" rel="noopener noreferrer"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/facebook.svg" alt="フェイスブックロゴ"></a>
+          <a href="https://www.instagram.com" class="footer__sns-link" target="_blank" rel="noopener noreferrer"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/instagram.svg" alt="インスタグラムロゴ"></a>
         </div>
       </div>
       <div class="footer__menu">

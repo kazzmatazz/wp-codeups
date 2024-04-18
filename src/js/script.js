@@ -59,6 +59,10 @@ jQuery(function ($) {
 
   // ページトップボタン
   const pageTop = $(".page-top");
+  // 404ページの場合は以下のスクリプトを実行しない
+  if (pageTop.hasClass('page-top--none')) {
+    return;
+  }
   pageTop.hide();
   $(window).scroll(function () {
     if ($(this).scrollTop() > 100) {

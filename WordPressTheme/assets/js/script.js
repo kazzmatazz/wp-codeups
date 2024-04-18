@@ -85,6 +85,7 @@ jQuery(function ($) {
     }, 500);
     return false;
   });
+  // フッター手前でストップ
   $(".page-top").hide();
   $(window).on("scroll", function () {
     var scrollHeight = $(document).height();
