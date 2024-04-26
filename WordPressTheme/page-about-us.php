@@ -27,7 +27,7 @@
           <div class="about-about__content">
             <h3 class="about-about__title">Dive into<br>the Ocean</h3>
             <div class="about-about__body">
-              <p class="about-about__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
+              <p class="about-about__text">ダイビングショップの魅力あふれる世界を写真でお届けします。透明度の高い海で色とりどりのサンゴや熱帯魚が輝く様子や、笑顔あふれるスタッフが準備を整える様子を捉えました。プロのガイドとともに未知の海を探索し、冒険心を刺激します。</p>
             </div>
           </div>
         </div>

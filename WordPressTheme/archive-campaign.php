@@ -16,7 +16,7 @@
       <div class="campaign-page__inner inner">
         <ul class="campaign-page__list category-list">
           <li class="category-list__item js-tab-menu is-active">
-            <a href="#">ALL</a>
+            <a href="<?php echo esc_url(home_url('/campaign/')); ?>">ALL</a>
           </li>
           <?php $terms = get_terms('campaign_category'); ?>
           <?php foreach ($terms as $term) : ?>
@@ -30,7 +30,7 @@
             <li class="campaign-page__content campaign-card">
               <div class="campaign-card__img">
                 <?php if (get_the_post_thumbnail()) : ?>
-                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
                 <?php else : ?>
                 <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
                 <?php endif; ?>
@@ -61,9 +61,18 @@
                     <?php endif; ?>
                   </div>
                 </div>
-                <p class="campaign-card__text u-desktop">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキスト</p>
+                <p class="campaign-card__text u-desktop"><?php the_field("campaign_content"); ?></p>
                 <div class="campaign-card__contents u-desktop">
-                  <p class="campaign-card__date">2023/6/1-9/30</p>
+                  <?php
+                    $campaign_date = get_field('campaign_date');
+                    ?>
+                  <?php if ($campaign_date) : ?>
+                  <?php
+                    $start_date = $campaign_date['start_date'];
+                    $end_date = $campaign_date['end_date'];
+                    ?>
+                  <p class="campaign-card__date"><?php echo $start_date . '-' . $end_date; ?></p>
+                  <?php endif; ?>
                   <p class="campaign-card__reserve">ご予約・お問い合わせはコチラ</p>
                   <div class="campaign-card__button">
                     <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="button">

@@ -6,11 +6,7 @@ $home = esc_url(home_url('/'));
   <main>
     <div class="not-found-wrap not-found-wrap-layout">
       <!-- パンくず -->
-      <div class="breadcrumb breadcrumb--white breadcrumb-layout">
-        <div class="inner">
-          <div>TOP > 404</div>
-        </div>
-      </div>
+      <?php  get_template_part('parts/breadcrumb'); ?>
       <!-- 404 -->
       <section class="not-found not-found-layout">
         <div class="not-found__inner inner">

@@ -23,7 +23,7 @@ $contact = esc_url(home_url('/contact/'));
         <a href="<?php the_permalink(); ?>" class="sidebar__popular-item sidebar-popular">
           <div class="sidebar-popular__img">
             <?php if (get_the_post_thumbnail()) : ?>
-            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
             <?php else : ?>
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
             <?php endif; ?>
@@ -58,7 +58,7 @@ $contact = esc_url(home_url('/contact/'));
         <div class="sidebar__review-item sidebar-review">
           <div class="sidebar-review__img">
             <?php if (get_the_post_thumbnail()) : ?>
-            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
             <?php else : ?>
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
             <?php endif; ?>
@@ -108,7 +108,7 @@ $contact = esc_url(home_url('/contact/'));
           <div class="campaign-card">
             <div class="campaign-card__img campaign-card__img--small">
               <?php if (get_the_post_thumbnail()) : ?>
-              <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+              <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
               <?php else : ?>
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
               <?php endif; ?>

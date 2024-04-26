@@ -76,7 +76,7 @@ $terms = esc_url(home_url('/terms-of-service/'));
               <div class="top-campaign__content campaign-card">
                 <div class="campaign-card__img">
                   <?php if (get_the_post_thumbnail()) : ?>
-                  <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+                  <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
                   <?php else : ?>
                   <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
                   <?php endif; ?>
@@ -147,7 +147,7 @@ $terms = esc_url(home_url('/terms-of-service/'));
           <div class="top-about__content">
             <h3 class="top-about__title">Dive into<br>the Ocean</h3>
             <div class="top-about__body">
-              <p class="top-about__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキスト</p>
+              <p class="top-about__text">ダイビングショップの魅力あふれる世界を写真でお届けします。透明度の高い海で色とりどりのサンゴや熱帯魚が輝く様子や、笑顔あふれるスタッフが準備を整える様子を捉えました。プロのガイドとともに未知の海を探索し、冒険心を刺激します。</p>
               <div class="top-about__button">
                 <a href="<?php echo $about; ?>" class="button">
                   <span class="button__text">
@@ -209,7 +209,7 @@ $terms = esc_url(home_url('/terms-of-service/'));
             <a href="<?php the_permalink(); ?>" class="blog-card__link">
               <div class="blog-card__img">
                 <?php if (get_the_post_thumbnail()) : ?>
-                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
                 <?php else : ?>
                 <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
                 <?php endif; ?>
@@ -279,13 +279,21 @@ $terms = esc_url(home_url('/terms-of-service/'));
               </div>
               <div class="voice-card__img colorbox">
                 <?php if (get_the_post_thumbnail()) : ?>
-                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
                 <?php else : ?>
                 <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
                 <?php endif; ?>
               </div>
             </div>
-            <p class="voice-card__text"><?php the_excerpt(); ?></p>
+            <?php
+            if (get_field('guest_voice')) :
+              $guest_voice = get_field('guest_voice');
+              if (mb_strlen($guest_voice) > 120) {
+                  $guest_voice = mb_substr($guest_voice, 0, 120) . "...";
+              }
+              ?>
+              <p class="voice-card__text"><?php echo $guest_voice; ?></p>
+            <?php endif; ?>
           </li>
           <?php endwhile; ?>
           <?php wp_reset_postdata(); ?>

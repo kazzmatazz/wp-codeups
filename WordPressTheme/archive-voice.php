@@ -16,7 +16,7 @@
       <div class="voice-page__inner inner">
         <ul class="voice-page__list category-list">
           <li class="category-list__item js-tab-menu is-active">
-            <a href="#">ALL</a>
+            <a href="<?php echo esc_url(home_url('/voice/')); ?>">ALL</a>
           </li>
           <?php $terms = get_terms('voice_category'); ?>
           <?php foreach ($terms as $term) : ?>
@@ -52,13 +52,13 @@
                 </div>
                 <div class="voice-card__img colorbox">
                   <?php if (get_the_post_thumbnail()) : ?>
-                  <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title() ?>の画像">
+                  <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
                   <?php else : ?>
                   <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
                   <?php endif; ?>
                 </div>
               </div>
-              <p class="voice-card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。</p>
+              <p class="voice-card__text"><?php the_field("guest_voice"); ?></p>
             </li>
           <?php endwhile; endif; ?>
         </ul>

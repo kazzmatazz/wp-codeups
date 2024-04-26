@@ -33,14 +33,7 @@
 }
 
 .blog-detail__content {
-  p {
-    margin-top: rem(24);
-    @include mq("md") {
-      margin-top: rem(40);
-    }
-  }
-
-  ul,ol {
+  p,ul,ol,h2,h3 {
     margin-top: rem(24);
     @include mq("md") {
       margin-top: rem(40);

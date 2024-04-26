@@ -410,6 +410,7 @@ a {
 	background-color: #fff;
 	box-shadow: 0.125rem 0.125rem 0.625rem 0 rgba(0, 0, 0, 0.25);
 	display: block;
+	height: 100%;
 	padding: 1rem 1rem 1.5rem;
 	transition: all 0.3s;
 }
@@ -488,12 +489,11 @@ a {
 	width: 100%;
 }
 
-.blog-detail__content p {
-	margin-top: 1.5rem;
-}
-
+.blog-detail__content p,
 .blog-detail__content ul,
-.blog-detail__content ol {
+.blog-detail__content ol,
+.blog-detail__content h2,
+.blog-detail__content h3 {
 	margin-top: 1.5rem;
 }
 
@@ -2756,12 +2756,11 @@ html {
 	margin-top: 2.5rem;
 }
 
-.blog-detail__content p {
-	margin-top: 2.5rem;
-}
-
+.blog-detail__content p,
 .blog-detail__content ul,
-.blog-detail__content ol {
+.blog-detail__content ol,
+.blog-detail__content h2,
+.blog-detail__content h3 {
 	margin-top: 2.5rem;
 }
 

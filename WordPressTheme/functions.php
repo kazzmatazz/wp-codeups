@@ -49,7 +49,6 @@ function Change_objectlabel() {
 add_action( 'init', 'Change_objectlabel' );
 add_action( 'admin_menu', 'Change_menulabel' );
 
-
 // アーカイブページの表示件数を変更
 function change_posts_per_page($query) {
 	if ( is_admin() || ! $query->is_main_query() )
@@ -180,3 +179,12 @@ function filter_wpcf7_form_tag($scanned_tag, $replace)
   return $scanned_tag;
 };
 add_filter('wpcf7_form_tag', 'filter_wpcf7_form_tag', 11, 2);
+
+// the_excerpt()に付与されるpタグを削除する
+// the_excerpt()の文字数を変更する
+remove_filter('the_excerpt', 'wpautop');
+function my_excerpt_length($length)
+{
+  return 85;
+}
+add_filter('excerpt_length', 'my_excerpt_length');
