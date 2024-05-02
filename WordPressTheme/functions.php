@@ -188,3 +188,25 @@ function my_excerpt_length($length)
   return 85;
 }
 add_filter('excerpt_length', 'my_excerpt_length');
+
+/* the_archive_titleの余計な文字を削除 */
+add_filter( 'get_the_archive_title', function ($title) {
+  if (is_category()) {
+      $title = single_cat_title('', false);
+  } elseif (is_tag()) {
+      $title = single_tag_title('', false);
+  } elseif (is_tax()) {
+      $title = single_term_title('', false);
+  } elseif (is_post_type_archive() ){
+      $title = post_type_archive_title('', false);
+  } elseif (is_year()) {
+      $title = get_the_time('Y年');
+  } elseif (is_month()) {
+      $title = get_the_time('Y年n月');
+  } elseif (is_search()) {
+      $title = '検索結果：'.esc_html(get_search_query(false));
+  } elseif (is_404()) {
+      $title = '「404」ページが見つかりません';
+  };
+  return $title;
+});

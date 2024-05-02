@@ -41,8 +41,8 @@
               <?php wp_pagenavi(); ?>
             </div>
           </div>
-          <aside class="blog-list__sidebar sidebar">
-            <?php get_template_part('parts/sidebar'); ?>
+          <aside class="blog-list__sidebar">
+            <?php get_sidebar(); ?>
           </aside>
         </div>
       </div>

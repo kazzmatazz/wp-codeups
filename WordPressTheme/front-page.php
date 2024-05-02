@@ -95,16 +95,18 @@ $terms = esc_url(home_url('/terms-of-service/'));
                     <p class="campaign-card__menu">全部コミコミ(お一人様)</p>
                     <div class="campaign-card__price">
                       <?php
-                        $price_group = get_field('campaign_price-group');
-                        ?>
-                      <?php if ($price_group) : ?>
-                      <?php
-                        $original_price = $price_group['original_price'];
-                        $discounted_price = $price_group['discounted_price'];
-                        ?>
-                      <p class="campaign-card__regular"><?php echo $original_price; ?></p>
-                      <p class="campaign-card__row"><?php echo $discounted_price; ?></p>
-                      <?php endif; ?>
+                      $price_group = get_field('campaign_price-group');
+                      if ($price_group) :
+                          $original_price = $price_group['original_price'];
+                          $discounted_price = $price_group['discounted_price'];
+                          if ($original_price) :
+                              ?><p class="campaign-card__regular"><?php echo $original_price; ?></p><?php
+                          endif;
+                          if ($discounted_price) :
+                              ?><p class="campaign-card__row"><?php echo $discounted_price; ?></p><?php
+                          endif;
+                      endif;
+                      ?>
                     </div>
                   </div>
                 </div>
@@ -323,78 +325,138 @@ $terms = esc_url(home_url('/terms-of-service/'));
             </picture>
           </div>
           <ul class="top-price__items">
-            <li class="top-price__item">
-              <h3 class="top-price__title">ライセンス講習</h3>
-              <dl class="top-price__container">
-                <?php
-                  $license_option_groups = SCF::get_option_meta('price_option', 'license');
-                  if (!empty($license_option_groups)) {
-                      foreach ($license_option_groups as $license_option) {
-                          $license_course = $license_option['license_course'];
-                          $license_price = $license_option['license_price'];
+            <?php
+              $license_option_groups = SCF::get_option_meta('price_option', 'license');
+              $display = false;
+              if (!empty($license_option_groups)) {
+                  foreach ($license_option_groups as $license_option) {
+                      $license_course = $license_option['license_course'];
+                      $license_price = $license_option['license_price'];
+                      if (!empty($license_course) && !empty($license_price)) {
+                          $display = true;
+                          break;
+                      }
+                  }
+              }
+              if ($display):
+              ?>
+              <li class="top-price__item">
+                <h3 class="top-price__title">ライセンス講習</h3>
+                <dl class="top-price__container">
+                  <?php
+                  foreach ($license_option_groups as $license_option) {
+                      $license_course = $license_option['license_course'];
+                      $license_price = $license_option['license_price'];
+                      if (!empty($license_course) && !empty($license_price)) {
                           echo '<div class="top-price__info">';
                           echo '<dt class="top-price__menu">' . esc_html($license_course) . '</dt>';
                           echo '<dd class="top-price__price">' . esc_html($license_price) . '</dd>';
                           echo '</div>';
-                    }
+                      }
                   }
-                ?>
-              </dl>
-            </li>
-            <li class="top-price__item">
-              <h3 class="top-price__title">体験ダイビング</h3>
-              <dl class="top-price__container">
-                <?php
-                  $experience_option_groups = SCF::get_option_meta('price_option', 'experience');
-                  if (!empty($experience_option_groups)) {
-                      foreach ($experience_option_groups as $experience_option) {
-                          $experience_course = $experience_option['experience_course'];
-                          $experience_price = $experience_option['experience_price'];
+                  ?>
+                </dl>
+              </li>
+            <?php endif; ?>
+            <?php
+              $experience_option_groups = SCF::get_option_meta('price_option', 'experience');
+              $display = false;
+              if (!empty($experience_option_groups)) {
+                  foreach ($experience_option_groups as $experience_option) {
+                      $experience_course = $experience_option['experience_course'];
+                      $experience_price = $experience_option['experience_price'];
+                      if (!empty($experience_course) && !empty($experience_price)) {
+                          $display = true;
+                          break;
+                      }
+                  }
+              }
+              if ($display):
+              ?>
+              <li class="top-price__item">
+                <h3 class="top-price__title">体験ダイビング</h3>
+                <dl class="top-price__container">
+                  <?php
+                  foreach ($experience_option_groups as $experience_option) {
+                      $experience_course = $experience_option['experience_course'];
+                      $experience_price = $experience_option['experience_price'];
+                      if (!empty($experience_course) && !empty($experience_price)) {
                           echo '<div class="top-price__info">';
                           echo '<dt class="top-price__menu">' . esc_html($experience_course) . '</dt>';
                           echo '<dd class="top-price__price">' . esc_html($experience_price) . '</dd>';
                           echo '</div>';
-                    }
+                      }
                   }
-                ?>
-              </dl>
-            </li>
-            <li class="top-price__item">
-              <h3 class="top-price__title">ファンダイビング</h3>
-              <dl class="top-price__container">
-                <?php
-                  $fun_option_groups = SCF::get_option_meta('price_option', 'fun');
-                  if (!empty($fun_option_groups)) {
-                      foreach ($fun_option_groups as $fun_option) {
-                          $fun_course = $fun_option['fun_course'];
-                          $fun_price = $fun_option['fun_price'];
+                  ?>
+                </dl>
+              </li>
+            <?php endif; ?>
+            <?php
+              $fun_option_groups = SCF::get_option_meta('price_option', 'fun');
+              $display = false;
+              if (!empty($fun_option_groups)) {
+                  foreach ($fun_option_groups as $fun_option) {
+                      $fun_course = $fun_option['fun_course'];
+                      $fun_price = $fun_option['fun_price'];
+                      if (!empty($fun_course) && !empty($fun_price)) {
+                          $display = true;
+                          break;
+                      }
+                  }
+              }
+              if ($display):
+              ?>
+              <li class="top-price__item">
+                <h3 class="top-price__title">ファンダイビング</h3>
+                <dl class="top-price__container">
+                  <?php
+                  foreach ($fun_option_groups as $fun_option) {
+                      $fun_course = $fun_option['fun_course'];
+                      $fun_price = $fun_option['fun_price'];
+                      if (!empty($fun_course) && !empty($fun_price)) {
                           echo '<div class="top-price__info">';
                           echo '<dt class="top-price__menu">' . esc_html($fun_course) . '</dt>';
                           echo '<dd class="top-price__price">' . esc_html($fun_price) . '</dd>';
                           echo '</div>';
-                    }
+                      }
                   }
-                ?>
-              </dl>
-            </li>
-            <li class="top-price__item">
-              <h3 class="top-price__title">スペシャルダイビング</h3>
-              <dl class="top-price__container">
-                <?php
-                  $special_option_groups = SCF::get_option_meta('price_option', 'special');
-                  if (!empty($special_option_groups)) {
-                      foreach ($special_option_groups as $special_option) {
-                          $special_course = $special_option['special_course'];
-                          $special_price = $special_option['special_price'];
+                  ?>
+                </dl>
+              </li>
+            <?php endif; ?>
+            <?php
+              $special_option_groups = SCF::get_option_meta('price_option', 'special');
+              $display = false;
+              if (!empty($special_option_groups)) {
+                  foreach ($special_option_groups as $special_option) {
+                      $special_course = $special_option['special_course'];
+                      $special_price = $special_option['special_price'];
+                      if (!empty($special_course) && !empty($special_price)) {
+                          $display = true;
+                          break;
+                      }
+                  }
+              }
+              if ($display):
+              ?>
+              <li class="top-price__item">
+                <h3 class="top-price__title">スペシャルダイビング</h3>
+                <dl class="top-price__container">
+                  <?php
+                  foreach ($special_option_groups as $special_option) {
+                      $special_course = $special_option['special_course'];
+                      $special_price = $special_option['special_price'];
+                      if (!empty($special_course) && !empty($special_price)) {
                           echo '<div class="top-price__info">';
                           echo '<dt class="top-price__menu">' . esc_html($special_course) . '</dt>';
                           echo '<dd class="top-price__price">' . esc_html($special_price) . '</dd>';
                           echo '</div>';
-                    }
+                      }
                   }
-                ?>
-              </dl>
-            </li>
+                  ?>
+                </dl>
+              </li>
+            <?php endif; ?>
           </ul>
         </div>
         <div class="top-price__button">

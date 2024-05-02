@@ -49,16 +49,18 @@
                   <p class="campaign-card__menu">全部コミコミ(お一人様)</p>
                   <div class="campaign-card__price">
                     <?php
-                      $price_group = get_field('campaign_price-group');
-                      ?>
-                    <?php if ($price_group) : ?>
-                    <?php
-                      $original_price = $price_group['original_price'];
-                      $discounted_price = $price_group['discounted_price'];
-                      ?>
-                    <p class="campaign-card__regular"><?php echo $original_price; ?></p>
-                    <p class="campaign-card__row"><?php echo $discounted_price; ?></p>
-                    <?php endif; ?>
+                    $price_group = get_field('campaign_price-group');
+                    if ($price_group) :
+                        $original_price = $price_group['original_price'];
+                        $discounted_price = $price_group['discounted_price'];
+                        if ($original_price) :
+                            ?><p class="campaign-card__regular"><?php echo $original_price; ?></p><?php
+                        endif;
+                        if ($discounted_price) :
+                            ?><p class="campaign-card__row"><?php echo $discounted_price; ?></p><?php
+                        endif;
+                    endif;
+                    ?>
                   </div>
                 </div>
                 <p class="campaign-card__text u-desktop"><?php the_field("campaign_content"); ?></p>

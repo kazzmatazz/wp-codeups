@@ -5,7 +5,7 @@
     <div class="blog-mv sub-mv">
       <div class="sub-mv__inner">
         <div class="sub-mv__title">
-          <h1 class="sub-mv__title-main">Blog</h1>
+          <h1 class="sub-mv__title-main"><?php the_archive_title(); ?></h1>
         </div>
       </div>
     </div>
@@ -41,8 +41,8 @@
               <?php wp_pagenavi(); ?>
             </div>
           </div>
-          <aside class="blog-list__sidebar sidebar">
-            <?php get_template_part('parts/sidebar'); ?>
+          <aside class="blog-list__sidebar">
+            <?php get_sidebar(); ?>
           </aside>
         </div>
       </div>

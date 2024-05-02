@@ -34,27 +34,41 @@
       </div>
     </section>
     <!-- ギャラリー -->
-    <section class="about-gallery about-gallery-layout">
-      <div class="about-gallery__inner inner">
-        <div class="about-gallery__heading section-heading">
-          <h2 class="section-heading__main">Gallery</h2>
-          <p class="section-heading__sub">フォト</p>
-        </div>
-        <div class="about-gallery__images">
-          <?php
-          $gallery_image_groups = SCF::get_option_meta('gallery','gallery_image_group');
-          if ( !empty( $gallery_image_groups ) ) {
-              foreach ( $gallery_image_groups as $image_group ) {
-                  $image_url = wp_get_attachment_image_url( $image_group['gallery_image'], 'full' );
-                  echo '<div class="about-gallery__image js-modal">';
-                  echo '<img src="' . esc_url( $image_url ). '" alt="ギャラリーの画像">';
-                  echo '</div>';
+    <?php
+      $gallery_image_groups = SCF::get_option_meta('gallery','gallery_image_group');
+      $display = false;
+      if (!empty($gallery_image_groups)) {
+          foreach ($gallery_image_groups as $image_group) {
+              $image_url = wp_get_attachment_image_url($image_group['gallery_image'], 'full');
+              if (!empty($image_url)) {
+                  $display = true;
+                  break;
               }
-            }
-          ?>
+          }
+      }
+      if ($display):
+      ?>
+      <section class="about-gallery about-gallery-layout">
+        <div class="about-gallery__inner inner">
+            <div class="about-gallery__heading section-heading">
+                <h2 class="section-heading__main">Gallery</h2>
+                <p class="section-heading__sub">フォト</p>
+            </div>
+            <div class="about-gallery__images">
+                <?php
+                foreach ($gallery_image_groups as $image_group) {
+                    $image_url = wp_get_attachment_image_url($image_group['gallery_image'], 'full');
+                    if (!empty($image_url)) {
+                        echo '<div class="about-gallery__image js-modal">';
+                        echo '<img src="' . esc_url($image_url) . '" alt="ギャラリーの画像">';
+                        echo '</div>';
+                    }
+                }
+                ?>
+            </div>
         </div>
-      </div>
-    </section>
+      </section>
+    <?php endif; ?>
     <div class="about-gallery__modal js-overlay"></div>
     <!-- コンタクト -->
     <?php get_template_part('parts/contact'); ?>
