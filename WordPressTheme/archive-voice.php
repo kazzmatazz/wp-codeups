@@ -51,10 +51,16 @@
                   <h3 class="voice-card__title"><?php the_title(); ?></h3>
                 </div>
                 <div class="voice-card__img colorbox">
-                  <?php if (get_the_post_thumbnail()) : ?>
-                  <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
+                  <?php
+                    $guset_group = get_field('guest_group');
+                    $image = $guset_group['image'];
+                    if ($image) :
+                  ?>
+                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php the_title(); ?>の画像">
+                  <?php elseif (get_the_post_thumbnail()) : ?>
+                    <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
                   <?php else : ?>
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
+                    <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
                   <?php endif; ?>
                 </div>
               </div>

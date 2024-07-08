@@ -58,10 +58,16 @@ $contact = esc_url(home_url('/contact/'));
           ?>
           <div class="sidebar__review-item sidebar-review">
             <div class="sidebar-review__img">
-              <?php if (get_the_post_thumbnail()) : ?>
-              <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
+              <?php
+                $guset_group = get_field('guest_group');
+                $image = $guset_group['image'];
+                if ($image) :
+              ?>
+                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php the_title(); ?>の画像">
+              <?php elseif (get_the_post_thumbnail()) : ?>
+                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
               <?php else : ?>
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
               <?php endif; ?>
             </div>
             <div class="sidebar-review__body">
@@ -108,10 +114,16 @@ $contact = esc_url(home_url('/contact/'));
           <li class="sidebar__campaign-item">
             <div class="campaign-card">
               <div class="campaign-card__img campaign-card__img--small">
-                <?php if (get_the_post_thumbnail()) : ?>
-                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
+                <?php
+                  $campaign_group = get_field('campaign_group');
+                  $image = $campaign_group['image'];
+                  if ($image) :
+                ?>
+                  <img src="<?php echo esc_url($image['url']); ?>" alt="<?php the_title(); ?>の画像">
+                <?php elseif (get_the_post_thumbnail()) : ?>
+                  <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
                 <?php else : ?>
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
+                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
                 <?php endif; ?>
               </div>
               <div class="campaign-card__body campaign-card__body--small">

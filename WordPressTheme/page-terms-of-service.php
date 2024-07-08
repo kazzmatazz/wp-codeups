@@ -23,7 +23,6 @@
             <?php the_content(); ?>
             <?php endwhile;
             endif; ?>
-            </div>
           </div>
         </div>
       </div>

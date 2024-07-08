@@ -1729,7 +1729,7 @@ input[type=tel]::placeholder {
 }
 
 .sidebar-review__category {
-	font-size: rme(12);
+	font-size: 0.75rem;
 }
 
 .sidebar-review__text {

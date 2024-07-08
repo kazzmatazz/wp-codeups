@@ -31,10 +31,16 @@
           <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
           <li class="campaign-page__content campaign-card">
             <div class="campaign-card__img">
-              <?php if (get_the_post_thumbnail()) : ?>
-              <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
+              <?php
+                $campaign_group = get_field('campaign_group');
+                $image = $campaign_group['image'];
+                if ($image) :
+              ?>
+                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php the_title(); ?>の画像">
+              <?php elseif (get_the_post_thumbnail()) : ?>
+                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>の画像">
               <?php else : ?>
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="noimage">
               <?php endif; ?>
             </div>
             <div class="campaign-card__body campaign-card__body--large">
@@ -65,7 +71,15 @@
                   ?>
                 </div>
               </div>
-              <p class="campaign-card__text u-desktop"><?php the_field("campaign_content"); ?></p>
+              <p class="campaign-card__text u-desktop">
+                <?php
+                  $campaign_group = get_field('campaign_group');
+                  $content = $campaign_group['content'];
+                  if ($content) :
+                ?>
+                  <?php echo $content; ?>
+                <?php endif; ?>
+              </p>
               <div class="campaign-card__contents u-desktop">
                 <?php
                   $campaign_date = get_field('campaign_date');
